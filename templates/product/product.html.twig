@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProductController!{% endblock %}
+{% block title %}Produit{{ parent() }}{% endblock %}
 
 {% block body %}
     <div class="product">
@@ -19,9 +19,7 @@
                 <p>Grâce à sa formule non irritante et respectueuse de votre peau, Nécessaire offre une alternative
                     saine aux déodorants conventionnels, tout en préservant l'équilibre naturel de votre corps.</p>
             </div>
-            <p>
                 <button>Ajouter au panier</button>
-            </p>
         </div>
     </div>
 {% endblock %}

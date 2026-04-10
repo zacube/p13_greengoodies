@@ -334,3 +334,194 @@ footer div {
 .info button:hover {
     background-color: black;
 }
+
+
+
+
+
+.login {
+    background-color: #FFFDF7;
+    display: flex;
+    width: 100%;
+}
+
+.login img {
+    flex: 0 0 50%;
+    max-width: 52%;
+    object-fit: cover;
+}
+
+.login .form {
+    flex: 1;
+    /*
+    display: flex;
+    flex-direction: column;
+    */
+    max-width: 479px;
+    margin: 0 auto;
+}
+
+.login form {
+    margin-top: 10px;
+
+}
+
+.login .form h1 {
+    font-size: 1.25em;
+    font-weight: 500;
+    margin-top: 90px;
+}
+
+.login .form label {
+    margin-top: 30px;
+    display: block;
+    font-size: .875em;
+    font-weight: 400;
+    color: #666;
+}
+
+.login .form input {
+    height: 45px;
+    padding: 10px;
+    width: calc(100% - 22px);
+    border: 1px solid #666;
+    margin-top: 10px;
+    background-color: #FFFDF7;
+    font-size: 1.1em;
+    font-weight: 300;
+    color: black;
+}
+
+.login .form p {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.login .form a {
+    font-size: .875em;
+    font-weight: 400;
+    color: #666;
+    text-decoration: none;
+    transition: color 300ms ease-out, opacity 300ms ease-out;
+}
+
+.login .form a:hover {
+    color: #333
+}
+.login .form button {
+    width: 100%;
+    border: none;
+    outline: 0;
+    background-color: #565656;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 30px;
+    font-size: .875em;
+    height: 77px;
+    transition: background-color 300ms ease-out, opacity 300ms ease-out;
+}
+
+.login .form button:hover {
+    background-color: black;
+}
+
+
+.signin {
+    background-color: #FFFDF7;
+    display: flex;
+    width: 100%;
+}
+
+.signin img {
+    flex: 0 0 50%;
+    max-width: 52%;
+    object-fit: cover;
+}
+
+.signin .form {
+    flex: 1;
+    max-width: 479px;
+    margin: 0 auto;
+}
+
+.signin .form h1 {
+    font-size: 1.25em;
+    font-weight: 500;
+    margin-top: 90px;
+}
+
+.signin .subtitle {
+    margin-top: 10px;
+    font-size: .75em;
+    font-weight: 400;
+    color: #666;
+}
+
+.signin .form label {
+    margin-top: 25px;
+    display: block;
+    font-size: .875em;
+    font-weight: 400;
+    color: #666;
+}
+
+.signin .form input#cgu + label {
+    display: inline;
+    line-height: 19px;
+}
+
+.signin .form input {
+    height: 45px;
+    padding: 10px;
+    width: calc(100% - 22px);
+    border: 1px solid #666;
+    margin-top: 10px;
+    background-color: #FFFDF7;
+    font-size: 1.1em;
+    font-weight: 300;
+    color: black;
+}
+
+
+.signin .form form + p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.signin .form a {
+    font-size: .875em;
+    font-weight: 400;
+    color: #666;
+    text-decoration: underline;
+    transition: color 300ms ease-out, opacity 300ms ease-out;
+}
+
+.signin .form a:hover {
+    color: #333
+}
+.signin .form button {
+    width: 100%;
+    border: none;
+    outline: 0;
+    background-color: #565656;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 30px;
+    font-size: .875em;
+    height: 77px;
+    transition: background-color 300ms ease-out, opacity 300ms ease-out;
+}
+
+.signin .form button:hover {
+    background-color: black;
+}
+
+.signin #cgu{
+    width: 19px;
+    height: 19px;
+    border: 1px solid #666;
+    margin-top: 30px;
+    background-color: #FFFDF7;
+}

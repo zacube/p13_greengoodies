@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}HomePage{{ parent() }}{% endblock %}
+{% block title %}Accueil{{ parent() }}{% endblock %}
 
 {% block body %}
     <section class="welcome">
@@ -10,66 +10,55 @@
             <p>Retrouvez des articles d’hygiène & beauté, des accessoires & boissons et du prêt-à-porter</p>
         </div>
         <div class="bloc2">
-            <img src="{{ '/images/hero-header.jpg' | imagine_filter('home1') }}">
+            <img src="{{ '/images/hero-header.jpg' | imagine_filter('home1') }}" alt="">
         </div>
     </section>
     <section class="products">
         <h1>Nos produits</h1>
         <div class="product-list">
             <div class="card">
-                <img src="{{ '/images/produit1.jpg' | imagine_filter('homeproduct') }}">
+                <img src="{{ '/images/produit1.jpg' | imagine_filter('homeproduct') }}" alt="">
                 <h3>Kit d'hygiène recyclable</h3>
                 <p class="desc">Pour une salle de bain éco-friendly</p>
                 <p class="price">24,99€</p>
-                <p>
-                    <button>Voir le produit</button>
-                </p>
+                <button>Voir le produit</button>
             </div>
             <div class="card">
                 <img src="{{ '/images/produit2.jpg' | imagine_filter('homeproduct') }}" alt="">
                 <h3>Nom du produit</h3>
                 <p class="desc">Description</p>
                 <p class="price">$19.99</p>
-                <p>
-                    <button>Voir le produit</button>
-                </p>
+                <button>Voir le produit</button>
             </div>
             <div class="card">
                 <img src="{{ '/images/produit3.jpg' | imagine_filter('homeproduct') }}" alt="">
                 <h3>Nom du produit</h3>
                 <p class="desc">Description</p>
                 <p class="price">$19.99</p>
-                <p>
-                    <button>Voir le produit</button>
-                </p>
+                <button>Voir le produit</button>
             </div>
             <div class="card">
-                <img src="{{ '/images/produit1.jpg' | imagine_filter('homeproduct') }}">
+                <img src="{{ '/images/produit1.jpg' | imagine_filter('homeproduct') }}" alt="">
                 <h3>Kit d'hygiène recyclable</h3>
                 <p class="desc">Pour une salle de bain éco-friendly</p>
                 <p class="price">24,99€</p>
-                <p>
-                    <button>Voir le produit</button>
-                </p>
+                <button>Voir le produit</button>
             </div>
             <div class="card">
                 <img src="{{ '/images/produit2.jpg' | imagine_filter('homeproduct') }}" alt="">
                 <h3>Nom du produit</h3>
                 <p class="desc">Description</p>
                 <p class="price">$19.99</p>
-                <p>
-                    <button>Voir le produit</button>
-                </p>
+                <button>Voir le produit</button>
             </div>
             <div class="card">
                 <img src="{{ '/images/produit3.jpg' | imagine_filter('homeproduct') }}" alt="">
                 <h3>Nom du produit</h3>
                 <p class="desc">Description</p>
                 <p class="price">$19.99</p>
-                <p>
-                    <button>Voir le produit</button>
-                </p>
+                <button>Voir le produit</button>
             </div>
+        </div>
     </section>
     <section>
         <div class="about1">
