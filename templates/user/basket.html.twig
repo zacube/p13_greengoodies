@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon panier{{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="basket">
+        <div>
+            <h1>Mon panier</h1>
+            <p><span>×</span> Vider le panier</p>
+            <div class="item">
+                <img src="{{ '/images/produit8.jpg' | imagine_filter('itembasket') }}">
+                <div class="infos">
+                    <h3>Nécessaire, déodorant Bio</h3>
+                    <p class="qty">Quantité : 1</p>
+                    <p class="price">8,50€</p>
+                </div>
+            </div>
+            <div class="total">
+                <p>Total panier : <span>8,50€</span></p>
+                <p class="shipping">Frais de livraison : Offert</p>
+            </div>
+            <a class="button">Valider la commande</a>
+        </div>
+    </div>
+{% endblock %}

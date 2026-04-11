@@ -1,14 +1,15 @@
 html, body {
-    height: 100%;
-    margin: 0;
-
     background-color: #e0e0dd;
     font-family: 'Inter', 'arial', sans-serif;
     font-size: 1em;
     color: #333;
+    height: 100%;
+    margin: 0;
+}
+
+body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
 }
 
 .wrapper {
@@ -167,23 +168,22 @@ footer div {
     margin: 0;
 }
 
-.card button {
+.card a {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
     margin: 0;
-    padding: 0;
-    border: none;
-    outline: 0;
     background-color: #FFFDF7;
     color: black;
-    text-align: center;
     cursor: pointer;
     width: 100%;
     height: 77px;
     font-size: .875em;
     transition: background-color 300ms ease-out, opacity 300ms ease-out;
-
 }
 
-.card button:hover {
+.card a:hover {
     background-color: #333;
     color: #FFFDF7;
 }
@@ -195,33 +195,29 @@ footer div {
     align-items: end;
 }
 
-.about1 .bloc1 {
-    padding-left: 40px;
-    padding-bottom: 40px;
+.about1 div {
+    padding: 0 0 40px 40px;
     width: 425px;
 }
 
-.about1 .bloc1 h2 {
+.about1 h2 {
     font-size: 1.25em;
     color: #333;
     font-weight: 500;
     margin-bottom: 10px;
 }
 
-.about1 .bloc1 p {
+.about1 p {
     font-size: .875em;
     font-weight: 300;
 }
 
-.about1 .bloc2 {
-    margin-left: 20px;
-}
 
 .about1 img {
-    object-fit: none;
     height: 646px;
-    width: 487px;
-    object-position: 0 -130px;
+    object-fit: cover;
+    flex-shrink: 0;
+    margin-left: 20px;
 }
 
 .about2 {
@@ -232,33 +228,28 @@ footer div {
     align-items: end;
 }
 
-.about2 .bloc1 {
-    padding-right: 40px;
-    padding-bottom: 40px;
+.about2 div{
+    padding: 0 40px 40px 0;
     width: 465px;
 }
 
-.about2 .bloc1 h2 {
+.about2 h2 {
     font-size: 1.25em;
     color: #333;
     font-weight: 500;
     margin-bottom: 10px;
 }
 
-.about2 .bloc1 p {
+.about2 p {
     font-size: .875em;
     font-weight: 300;
 }
 
-.about2 .bloc2 {
-    margin-right: 20px;
-}
-
 .about2 img {
-    object-fit: none;
     height: 646px;
-    width: 487px;
-    object-position: -60px -190px;
+    object-fit: cover;
+    flex-shrink: 0;
+    margin-right: 20px;
 }
 
 .product {
@@ -285,14 +276,16 @@ footer div {
     padding-bottom: 50px;
 }
 
-.product .details{
+.product .details {
     text-align: left;
 }
+
 .details h1 {
     font-size: 1.25em;
     font-weight: 500;
     margin-top: 90px;
 }
+
 .details h4 {
     font-size: .625em;
     font-weight: 400;
@@ -314,29 +307,28 @@ footer div {
     margin-top: 10px;
 }
 
-.info button {
+.info a {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+
     position: absolute;
     bottom: 0;
     width: 100%;
     left: 0;
     margin: 0;
-    border: none;
-    outline: 0;
     background-color: #565656;
     color: white;
-    text-align: center;
     cursor: pointer;
     font-size: .875em;
     height: 77px;
     transition: background-color 300ms ease-out, opacity 300ms ease-out;
 }
 
-.info button:hover {
+.info a:hover {
     background-color: black;
 }
-
-
-
 
 
 .login {
@@ -408,13 +400,15 @@ footer div {
 .login .form a:hover {
     color: #333
 }
-.login .form button {
+
+.login .form a.button {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    border: none;
-    outline: 0;
     background-color: #565656;
     color: white;
-    text-align: center;
     cursor: pointer;
     margin-top: 30px;
     font-size: .875em;
@@ -422,7 +416,7 @@ footer div {
     transition: background-color 300ms ease-out, opacity 300ms ease-out;
 }
 
-.login .form button:hover {
+.login .form a.button:hover {
     background-color: black;
 }
 
@@ -500,13 +494,15 @@ footer div {
 .signin .form a:hover {
     color: #333
 }
-.signin .form button {
+
+.signin .form a.button {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    border: none;
-    outline: 0;
     background-color: #565656;
     color: white;
-    text-align: center;
     cursor: pointer;
     margin-top: 30px;
     font-size: .875em;
@@ -514,14 +510,215 @@ footer div {
     transition: background-color 300ms ease-out, opacity 300ms ease-out;
 }
 
-.signin .form button:hover {
+.signin .form a.button:hover {
     background-color: black;
 }
 
-.signin #cgu{
+.signin #cgu {
     width: 19px;
     height: 19px;
     border: 1px solid #666;
     margin-top: 30px;
     background-color: #FFFDF7;
 }
+
+.basket {
+    background-color: #F7F1EC;
+    min-height: calc(100vh - 160px);
+}
+
+.basket > div {
+    margin: 0 auto;
+    padding-top: 90px;
+    padding-bottom: 145px;
+    width: 604px;
+}
+
+.basket h1 {
+    font-size: 1.25em;
+    font-weight: 500;
+    text-align: center;
+}
+
+.basket h1 + p {
+    font-size: .875em;
+    font-weight: 400;
+    color: #666;
+}
+
+.basket h1 + p span {
+    font-size: 1.25em;
+}
+
+.basket .item {
+    background-color: #FFFDF7;
+    padding: 40px;
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.basket img {
+    max-width: 142px;
+}
+
+.basket .infos {
+margin-left: 55px;
+    align-content: center;
+}
+
+.basket h3 {
+    font-size: .875em;
+    font-weight: 600;
+    color: black;
+    margin: 0;
+}
+.basket .qty {
+    font-size: .875em;
+    font-weight: 400;
+    color: #666;
+    margin-top: 6px;
+}
+.basket .price {
+    font-size: 1.125em;
+    font-weight: 500;
+    color: #333;
+    margin-top: 12px;
+    margin-bottom: 0;
+}
+
+.basket .total {
+    background-color: #FFFDF7;
+    padding: 20px 40px;
+    width: 100%;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.basket .total p {
+    font-size: .875em;
+    font-weight: 500;
+    color: #333;
+    text-align: right;
+    margin: 0;
+}
+
+.basket .total p span {
+    font-size: 1.5em;
+    font-weight: 400;
+    color: #333;
+}
+
+.basket .total p + p {
+    font-size: .75em;
+    font-weight: 400;
+    color: #666;
+}
+
+.basket a.button {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    width: 479px;
+    background-color: #565656;
+    color: white;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: .875em;
+    height: 77px;
+    transition: background-color 300ms ease-out, opacity 300ms ease-out;
+}
+
+.basket a.button:hover {
+    background-color: black;
+}
+
+.account {
+    background-color: #F7F1EC;
+    min-height: calc(100vh - 160px);
+    margin: 0 auto;
+    padding-bottom: 80px;
+}
+
+.account h1 {
+    font-size: 1.25em;
+    font-weight: 500;
+    text-align: center;
+    padding-top: 45px;
+    margin-top: 0;
+    margin-bottom: 45px;
+}
+ .account h2{
+     font-size: .875em;
+     font-weight: 600;
+     color: #000;
+     margin: 0 0 30px;
+ }
+
+.orders, .api, .delete{
+    box-sizing: border-box;
+    width: 604px;
+    background-color: #FFFDF7;
+    padding: 60px;
+    margin: 0 auto 15px;
+}
+ .orders table{
+     width: 100%;
+     border-collapse: collapse;
+     border: none;
+ }
+tr {
+}
+td, th {
+    border-bottom: 1px solid #ccc;
+    font-size: .875em;
+    text-align: left;
+}
+.orders th{
+    padding: 0 10px 20px;
+    font-weight: 400;
+    color: #666;
+}
+.orders td{
+    padding: 20px 10px 30px;
+    font-weight: 500;
+    color: #333;
+}
+td:nth-child(1), td:nth-child(2), th:nth-child(1), th:nth-child(2){
+    width: auto;
+}
+
+th:nth-child(1), td:nth-child(1) {
+    width: 35%;
+    white-space: nowrap;
+}
+
+th:nth-child(3), td:nth-child(3) {
+    width: 1%;
+    white-space: nowrap;
+}
+
+.api a.button, .delete a.button {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    background-color: #565656;
+    color: #ffffff;
+    cursor: pointer;
+    width: 100%;
+    height: 77px;
+    font-size: .875em;
+    transition: background-color 300ms ease-out, opacity 300ms ease-out;
+}
+
+.api a.button:hover, .delete a.button:hover{
+    background-color: #333;
+    color: #FFFDF7;
+}
+

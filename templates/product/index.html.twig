@@ -21,60 +21,58 @@
                 <h3>Kit d'hygiène recyclable</h3>
                 <p class="desc">Pour une salle de bain éco-friendly</p>
                 <p class="price">24,99€</p>
-                <button>Voir le produit</button>
+                <a href="{{ path('app_product') }}" >Voir le produit</a>
             </div>
             <div class="card">
                 <img src="{{ '/images/produit2.jpg' | imagine_filter('homeproduct') }}" alt="">
                 <h3>Nom du produit</h3>
                 <p class="desc">Description</p>
                 <p class="price">$19.99</p>
-                <button>Voir le produit</button>
+                <a href="{{ path('app_product') }}" >Voir le produit</a>
             </div>
             <div class="card">
                 <img src="{{ '/images/produit3.jpg' | imagine_filter('homeproduct') }}" alt="">
                 <h3>Nom du produit</h3>
                 <p class="desc">Description</p>
                 <p class="price">$19.99</p>
-                <button>Voir le produit</button>
+                <a href="{{ path('app_product') }}" >Voir le produit</a>
             </div>
             <div class="card">
                 <img src="{{ '/images/produit1.jpg' | imagine_filter('homeproduct') }}" alt="">
                 <h3>Kit d'hygiène recyclable</h3>
                 <p class="desc">Pour une salle de bain éco-friendly</p>
                 <p class="price">24,99€</p>
-                <button>Voir le produit</button>
+                <a href="{{ path('app_product') }}" >Voir le produit</a>
             </div>
             <div class="card">
                 <img src="{{ '/images/produit2.jpg' | imagine_filter('homeproduct') }}" alt="">
                 <h3>Nom du produit</h3>
                 <p class="desc">Description</p>
                 <p class="price">$19.99</p>
-                <button>Voir le produit</button>
+                <a href="{{ path('app_product') }}" >Voir le produit</a>
             </div>
             <div class="card">
                 <img src="{{ '/images/produit3.jpg' | imagine_filter('homeproduct') }}" alt="">
                 <h3>Nom du produit</h3>
                 <p class="desc">Description</p>
                 <p class="price">$19.99</p>
-                <button>Voir le produit</button>
+                <a href="{{ path('app_product') }}" >Voir le produit</a>
             </div>
         </div>
     </section>
     <section>
         <div class="about1">
-            <div class="bloc1">
+            <div>
                 <h2>Notre conviction</h2>
                 <p>Chez GreenGoodies, nous croyons en un monde où le commerce peut être synonyme de bien-être pour la
                     planète et ses habitants. Notre mission est de vous proposer une sélection rigoureuse de produits
                     qui
                     allient qualité, durabilité et éthique</p>
             </div>
-            <div class="bloc2">
-                <img src="{{ '/images/conviction.jpg' | imagine_filter('home2') }}" alt="conviction">
-            </div>
+            <img src="{{ '/images/conviction.jpg' | imagine_filter('home2') }}" alt="conviction">
         </div>
         <div class="about2">
-            <div class="bloc1">
+            <div>
                 <h2>Nos valeurs</h2>
                 <p>Durabilité : Nous sélectionnons soigneusement des produits qui respectent l'environnement et
                     favorisent
@@ -86,9 +84,7 @@
                     matériaux
                     écologiques.</p>
             </div>
-            <div class="bloc2">
-                <img src="{{ '/images/valeurs.jpg' | imagine_filter('home2') }}" alt="valeurs">
-            </div>
+            <img src="{{ '/images/valeurs.jpg' | imagine_filter('home2') }}" alt="valeurs">
         </div>
     </section>
 {% endblock %}

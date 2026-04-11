@@ -21,9 +21,9 @@
                 <input type="password" name="password2" id="password2" required="">
                 <input type="checkbox" id="cgu" name="cgu" value="Bike">
                 <label for="vehicle1">J’accepte les CGU de GreenGoodies</label><br>
-                <button class="mainButton">Se connecter</button>
+                <a class="button">Se connecter</a>
             </form>
-            <p><a href="index.php?action=registrationForm">Pas encore de compte ? S’inscrire</a></p>
+            <p><a href="{{ path('app_auth_login') }}">Pas encore de compte ? S’inscrire</a></p>
         </div>
     </div>
 {% endblock %}

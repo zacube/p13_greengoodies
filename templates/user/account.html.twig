@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="account">
+        <h1>Mon compte</h1>
+        <div class="orders">
+            <h2>Mes commandes</h2>
+            <table>
+                <tr>
+                    <th>N°</th>
+                    <th>Date</th>
+                    <th class="colonne3">Prix</th>
+                </tr>
+                <tr>
+                    <td>01</td>
+                    <td>01/01/2024</td>
+                    <td class="colonne3">185,50€</td>
+                </tr>
+                <tr>
+                    <td>01</td>
+                    <td>01/01/2024</td>
+                    <td class="colonne3">185,50€</td>
+                </tr>
+                <tr>
+                    <td>01</td>
+                    <td>01/01/2024</td>
+                    <td class="colonne3">185,50€</td>
+                </tr>
+            </table>
+        </div>
+        <div class="api">
+            <h2>Mon accès API</h2>
+            <a class="button">Activer mon accès API</a>
+        </div>
+        <div class="delete">
+            <a class="button">Supprimer mon compte</a>
+        </div>
+    </div>
+{% endblock %}

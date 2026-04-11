@@ -22,3 +22,7 @@ liip_imagine:
             quality: 90
             filters:
                 thumbnail: { size: [734, 988], mode: outbound }
+        itembasket:
+            quality: 90
+            filters:
+                thumbnail: { size: [142, 132], mode: outbound }
