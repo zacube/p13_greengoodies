@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\OrderItemRepository;
+use App\Repository\PurchaseItemRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: OrderItemRepository::class)]
-class OrderItem
+#[ORM\Entity(repositoryClass: PurchaseItemRepository::class)]
+class PurchaseItem
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
