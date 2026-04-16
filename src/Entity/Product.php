@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -28,6 +30,24 @@ class Product
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $longDesc = null;
+
+    /**
+     * @var Collection<int, PurchaseItem>
+     */
+    #[ORM\OneToMany(targetEntity: PurchaseItem::class, mappedBy: 'product')]
+    private Collection $purchase_item;
+
+    /**
+     * @var Collection<int, Basket>
+     */
+    #[ORM\OneToMany(targetEntity: Basket::class, mappedBy: 'product', orphanRemoval: true)]
+    private Collection $basket;
+
+    public function __construct()
+    {
+        $this->purchase_item = new ArrayCollection();
+        $this->basket = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -90,6 +110,66 @@ class Product
     public function setLongDesc(string $longDesc): static
     {
         $this->longDesc = $longDesc;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PurchaseItem>
+     */
+    public function getPurchaseItem(): Collection
+    {
+        return $this->purchase_item;
+    }
+
+    public function addPurchaseItem(PurchaseItem $purchaseItem): static
+    {
+        if (!$this->purchase_item->contains($purchaseItem)) {
+            $this->purchase_item->add($purchaseItem);
+            $purchaseItem->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removePurchaseItem(PurchaseItem $purchaseItem): static
+    {
+        if ($this->purchase_item->removeElement($purchaseItem)) {
+            // set the owning side to null (unless already changed)
+            if ($purchaseItem->getProduct() === $this) {
+                $purchaseItem->setProduct(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Basket>
+     */
+    public function getBasket(): Collection
+    {
+        return $this->basket;
+    }
+
+    public function addBasket(Basket $basket): static
+    {
+        if (!$this->basket->contains($basket)) {
+            $this->basket->add($basket);
+            $basket->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBasket(Basket $basket): static
+    {
+        if ($this->basket->removeElement($basket)) {
+            // set the owning side to null (unless already changed)
+            if ($basket->getProduct() === $this) {
+                $basket->setProduct(null);
+            }
+        }
 
         return $this;
     }
