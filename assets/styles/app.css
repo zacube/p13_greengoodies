@@ -147,6 +147,8 @@ footer div {
     font-size: 1em;
     font-weight: 600;
     color: black;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .card .desc {
@@ -154,6 +156,8 @@ footer div {
     font-size: .875em;
     font-weight: 400;
     color: #666;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .card .price {
