@@ -24,6 +24,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 180)]
     #[Assert\NotBlank(message: "L'email est obligatoire")]
+    #[Assert\Email(message: "L'email n'est pas valide")]
     private ?string $email = null;
 
     /**
@@ -48,6 +49,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $lastname = null;
 
     #[ORM\Column]
+    #[Assert\IsTrue(message: "Vous devez accepter les CGU")]
     private ?bool $cgu = null;
 
     #[ORM\Column]

@@ -53,6 +53,8 @@ class RegistrationType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'attr' => ['novalidate' => 'novalidate'],
+            'data-turbo' => 'false',  //pour désactiver Turbo qui, sinon, intercepte la soumission
         ]);
     }
 }

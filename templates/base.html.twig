@@ -18,7 +18,6 @@
 
 </head>
 <body>
-<div class="wrapper">
     <header>
         <a href="{{ path('app_index') }}" class="logo">
             <img src="{{ asset('images/logo.svg') }}" alt="logo GreenGoodies">
@@ -32,6 +31,7 @@
             </div>
         </nav>
     </header>
+<div class="wrapper">
     {% block body %}{% endblock %}
 </div>
 <footer>

@@ -7,10 +7,10 @@ html, body {
     margin: 0;
 }
 
-body {
+/*body {
     display: flex;
     flex-direction: column;
-}
+}*/
 
 .wrapper {
     background-color: #FFFDF7;
@@ -524,6 +524,10 @@ footer div {
     margin-top: 30px;
 }
 
+.cgu ul {
+    order: 3;
+}
+
 .cgulabel {
     order: 2;
     cursor: pointer;
@@ -549,23 +553,14 @@ footer div {
     outline: 1px solid #fffdf7;
     outline-offset: -2px;
 }
+
+.signin form ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: red;
+    font-size: .7em;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .basket {
     background-color: #F7F1EC;
