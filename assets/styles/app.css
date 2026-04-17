@@ -443,7 +443,7 @@ footer div {
     margin: 0 auto;
 }
 
-.signin .form h1 {
+.signin h1 {
     font-size: 1.25em;
     font-weight: 500;
     margin-top: 90px;
@@ -456,7 +456,7 @@ footer div {
     color: #666;
 }
 
-.signin .form label {
+.signin .stdlabel {
     margin-top: 25px;
     display: block;
     font-size: .875em;
@@ -464,12 +464,9 @@ footer div {
     color: #666;
 }
 
-.signin .form input#cgu + label {
-    display: inline;
-    line-height: 19px;
-}
-
-.signin .form input {
+.signin input[type=text],
+.signin input[type=email],
+.signin input[type=password] {
     height: 45px;
     padding: 10px;
     width: calc(100% - 22px);
@@ -482,12 +479,12 @@ footer div {
 }
 
 
-.signin .form form + p {
+.signin form + p {
     text-align: center;
     margin-top: 10px;
 }
 
-.signin .form a {
+.signin form + p a {
     font-size: .875em;
     font-weight: 400;
     color: #666;
@@ -499,8 +496,9 @@ footer div {
     color: #333
 }
 
-.signin .form a.button {
+.signin button {
     display: flex;
+    border: 0;
     text-decoration: none;
     align-items: center;
     justify-content: center;
@@ -508,23 +506,66 @@ footer div {
     background-color: #565656;
     color: white;
     cursor: pointer;
-    margin-top: 30px;
+    margin-top: 50px;
     font-size: .875em;
     height: 77px;
     transition: background-color 300ms ease-out, opacity 300ms ease-out;
 }
 
-.signin .form a.button:hover {
+.signin button:hover {
     background-color: black;
 }
 
-.signin #cgu {
-    width: 19px;
-    height: 19px;
-    border: 1px solid #666;
+.cgu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
     margin-top: 30px;
-    background-color: #FFFDF7;
 }
+
+.cgulabel {
+    order: 2;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+}
+
+.cgubox {
+    order: 1;
+    appearance: none;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #666;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    background-color: #fff;
+}
+
+.cgubox:checked {
+    background-color: #333;
+    border: 1px solid #333;
+    outline: 1px solid #fffdf7;
+    outline-offset: -2px;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .basket {
     background-color: #F7F1EC;

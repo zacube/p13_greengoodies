@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Form\RegistrationType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,9 +32,23 @@ final class AuthController extends AbstractController
     #[Route('/signin', name: 'app_auth_signin')]
     public function signin(Request $request, EntityManagerInterface $manager, UserPasswordHasherInterface $passwordHasher): Response
     {
+        $user = new User();
+        $form = $this->createForm(RegistrationType::class, $user);
 
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Hash du mot de passe
+            $user->setPassword($passwordHasher->hashPassword($user, $user->getPassword()));
+
+            $manager->persist($user);
+            $manager->flush();
+
+            return $this->redirectToRoute('app_index');
+        }
 
         return $this->render('auth/signin.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 
