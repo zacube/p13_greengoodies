@@ -46,7 +46,11 @@ final class AuthController extends AbstractController
 
         return $this->render('auth/signin.html.twig', [
             'form' => $form->createView()
-        ]);
+        ], new Response('', $form->isSubmitted() && !$form->isValid() ? 422 : 200));
+//          Affichage des messages d'erreur sur les formulaires
+//          symfony/ux-turbo intercepte les soumissions de formulaires et les envoie en POST en AJAX(requête fetch).
+//          Par défaut Symfony renvoie 200, donc Turbo pense que tout est ok et n'affiche pas les messages d'erreur.
+//          Il ne les affiche que s'il reçoit un 422.
     }
 
     #[Route('/logout', name: 'app_auth_logout')]

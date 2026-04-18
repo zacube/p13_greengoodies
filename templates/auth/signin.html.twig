@@ -9,7 +9,7 @@
             <h1>Inscription</h1>
             <p class="subtitle">Tous les champs sont obligatoires.</p>
 
-            {{ form_start(form, {'attr': {'data-turbo': 'false'}}) }}
+            {{ form_start(form) }}
             {{ form_row(form.firstname) }}
             {{ form_row(form.lastname) }}
             {{ form_row(form.email) }}
