@@ -24,11 +24,18 @@
         </a>
         <nav>
             <a href="{{ path('app_index') }}" class="">Nos produits</a>
-            <div>
-                <a href="{{ path('app_basket') }}" class="">Panier</a>
-                <a href="{{ path('app_account') }}" class="">Commandes</a>
-                <a href="{{ path('app_auth_login') }}" class="">Connexion</a>
-            </div>
+            {% if app.user %}
+                <div>
+                    <a href="{{ path('app_basket') }}" class="">Panier</a>
+                    <a href="{{ path('app_account') }}" class="">Commandes</a>
+                    <a href="{{ path('app_auth_logout') }}" class="">Déconnexion</a>
+                </div>
+            {% else %}
+                <div>
+                    <a href="{{ path('app_auth_signin') }}" class="">Inscription</a>
+                    <a href="{{ path('app_auth_login') }}" class="">Connexion</a>
+                </div>
+            {% endif %}
         </nav>
     </header>
 <div class="wrapper">
@@ -37,7 +44,7 @@
 <footer>
     <div>
         <a href="">CGU</a>
-        <a href="">© GreenGoodies - 2024</a>
+        <a href="">© GreenGoodies - {{ "now"|date("Y") }}</a>
     </div>
 </footer>
 </body>

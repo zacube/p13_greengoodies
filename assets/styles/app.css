@@ -402,12 +402,14 @@ footer div {
 }
 
 .login .form a:hover {
-    color: #333
+    color: #333;
+    text-decoration: underline;
 }
 
-.login .form a.button {
+.login button {
     display: flex;
     text-decoration: none;
+    border: 0;
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -420,8 +422,24 @@ footer div {
     transition: background-color 300ms ease-out, opacity 300ms ease-out;
 }
 
-.login .form a.button:hover {
+.login button:hover {
     background-color: black;
+}
+
+.login div.alert {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: red;
+    font-size: .7em;
+}
+
+.login div.logged {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #333;
+    font-size: .75em;
 }
 
 
@@ -435,6 +453,7 @@ footer div {
     flex: 0 0 50%;
     max-width: 52%;
     object-fit: cover;
+    height: 1104px;
 }
 
 .signin .form {
@@ -471,7 +490,7 @@ footer div {
     padding: 10px;
     width: calc(100% - 22px);
     border: 1px solid #666;
-    margin-top: 10px;
+    margin-top: 5px;
     background-color: #FFFDF7;
     font-size: 1.1em;
     font-weight: 300;
@@ -488,12 +507,13 @@ footer div {
     font-size: .875em;
     font-weight: 400;
     color: #666;
-    text-decoration: underline;
+    text-decoration: none;
     transition: color 300ms ease-out, opacity 300ms ease-out;
 }
 
 .signin .form a:hover {
-    color: #333
+    color: #333;
+    text-decoration: underline;
 }
 
 .signin button {
@@ -516,6 +536,14 @@ footer div {
     background-color: black;
 }
 
+.signin form ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: red;
+    font-size: .7em;
+}
+
 .cgu {
     display: flex;
     align-items: center;
@@ -532,8 +560,13 @@ footer div {
     order: 2;
     cursor: pointer;
     font-size: 14px;
+    color: #666;
+}
+
+.cgulabel:hover {
     color: #333;
 }
+
 
 .cgubox {
     order: 1;
@@ -554,13 +587,6 @@ footer div {
     outline-offset: -2px;
 }
 
-.signin form ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    color: red;
-    font-size: .7em;
-}
 
 .basket {
     background-color: #F7F1EC;
