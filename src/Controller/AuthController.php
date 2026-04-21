@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\RegistrationType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -30,7 +31,7 @@ final class AuthController extends AbstractController
     }
 
     #[Route('/signin', name: 'app_auth_signin')]
-    public function signin(Request $request, EntityManagerInterface $manager, UserPasswordHasherInterface $passwordHasher): Response
+    public function signin(Request $request, EntityManagerInterface $manager, UserPasswordHasherInterface $passwordHasher, Security $security): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationType::class, $user);
@@ -41,7 +42,7 @@ final class AuthController extends AbstractController
             $user->setPassword($passwordHasher->hashPassword($user, $user->getPassword()));
             $manager->persist($user);
             $manager->flush();
-            return $this->redirectToRoute('app_index');
+            return $security->login($user, 'form_login', 'main');
         }
 
         return $this->render('auth/signin.html.twig', [
@@ -49,7 +50,7 @@ final class AuthController extends AbstractController
         ], new Response('', $form->isSubmitted() && !$form->isValid() ? 422 : 200));
 //          Affichage des messages d'erreur sur les formulaires
 //          symfony/ux-turbo intercepte les soumissions de formulaires et les envoie en POST en AJAX(requête fetch).
-//          Par défaut Symfony renvoie 200, donc Turbo pense que tout est ok et n'affiche pas les messages d'erreur.
+//          Par défaut, Symfony retourne un code 200, donc Turbo pense que tout est ok et n'affiche pas les messages d'erreur.
 //          Il ne les affiche que s'il reçoit un 422.
     }
 
