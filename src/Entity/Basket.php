@@ -16,7 +16,7 @@ class Basket
     #[ORM\Column]
     private ?int $quantity = null;
 
-    #[ORM\OneToOne(mappedBy: 'basket', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'basket', cascade: ['persist', 'remove'])]
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'basket')]
@@ -47,16 +47,6 @@ class Basket
 
     public function setUser(?User $user): static
     {
-        // unset the owning side of the relation if necessary
-        if ($user === null && $this->user !== null) {
-            $this->user->setBasket(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($user !== null && $user->getBasket() !== $this) {
-            $user->setBasket($this);
-        }
-
         $this->user = $user;
 
         return $this;

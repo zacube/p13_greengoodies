@@ -55,8 +55,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?bool $api = false;
 
-    #[ORM\OneToOne(inversedBy: 'user', cascade: ['persist', 'remove'])]
-    private ?Basket $basket = null;
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Basket::class, cascade: ['persist', 'remove'])]
+    private Collection $basket;
 
     /**
      * @var Collection<int, Purchase>
@@ -67,6 +67,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->purchase = new ArrayCollection();
+        $this->basket = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -192,15 +193,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getBasket(): ?Basket
+    public function getBasket(): Collection
     {
         return $this->basket;
     }
 
-    public function setBasket(?Basket $basket): static
+    public function addBasket(Basket $basket): static  // ✅
     {
-        $this->basket = $basket;
+        if (!$this->basket->contains($basket)) {
+            $this->basket->add($basket);
+            $basket->setUser($this);
+        }
+        return $this;
+    }
 
+    public function removeBasket(Basket $basket): static  // ✅
+    {
+        if ($this->basket->removeElement($basket)) {
+            if ($basket->getUser() === $this) {
+                $basket->setUser(null);
+            }
+        }
         return $this;
     }
 
