@@ -18,7 +18,7 @@
         <div class="product-list">
             {% for product in products %}
                 <div class="card">
-                    <img src="{{ product.picture | imagine_filter('homeproduct') }}" alt="">
+                    <a href="{{ path('app_product', { id: product.id}) }}" ><img src="{{ product.picture | imagine_filter('homeproduct') }}" alt=""></a>
                     <h3>{{ product.name }}</h3>
                     <p class="desc">{{ product.shortDesc }}</p>
                     <p class="price">{{ product.price}} €</p>

@@ -622,6 +622,7 @@ footer div {
     width: 100%;
     display: flex;
     box-sizing: border-box;
+    margin-bottom: 3px;
 }
 
 .basket img {

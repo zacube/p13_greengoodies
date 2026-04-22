@@ -12,7 +12,8 @@
                 <h4>Description</h4>
                 <p>{{ product.longDesc}}</p>
             </div>
-            <a href="">Ajouter au panier</a>
+
+            <a href="{{ path('app_add_product', { id: product.id}) }}">Ajouter au panier</a>
         </div>
     </div>
 {% endblock %}
