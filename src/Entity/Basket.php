@@ -16,7 +16,7 @@ class Basket
     #[ORM\Column]
     private ?int $quantity = null;
 
-    #[ORM\ManyToOne(inversedBy: 'basket', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'basket')]
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'basket')]

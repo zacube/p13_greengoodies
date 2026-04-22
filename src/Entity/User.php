@@ -55,7 +55,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?bool $api = false;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Basket::class, cascade: ['persist', 'remove'])]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Basket::class, cascade: ['remove'])]
     private Collection $basket;
 
     /**
