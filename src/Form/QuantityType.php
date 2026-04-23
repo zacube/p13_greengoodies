@@ -16,6 +16,9 @@ class QuantityType extends AbstractType
         $builder
             ->add('quantity', IntegerType::class, [
                 'label' => 'Quantité',
+                'attr' => ['class' => 'qty'],
+                'label_attr' => ['class' => 'qty']
+
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Ajouter au panier',
@@ -26,7 +29,7 @@ class QuantityType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Basket::class,
+            'data_class' => null, //le formulaire travaille avec des données brutes, sans lien avec l'entité
             'attr' => ['novalidate' => 'novalidate'],
         ]);
     }

@@ -7,10 +7,10 @@ html, body {
     margin: 0;
 }
 
-/*body {
+body {
     display: flex;
     flex-direction: column;
-}*/
+}
 
 .wrapper {
     background-color: #FFFDF7;
@@ -32,6 +32,7 @@ header {
     justify-content: space-between;
     align-items: center;
     background-color: #FFFDF7;
+    flex-shrink: 0;
 }
 
 .logo {
@@ -136,6 +137,13 @@ footer div {
     max-width: 480px;
     margin: 0;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.card a.picture {
+    display: block;
+    height: 100%;
 }
 
 .card img {
@@ -172,7 +180,7 @@ footer div {
     margin: 0;
 }
 
-.card a {
+.card a.button {
     display: flex;
     text-decoration: none;
     align-items: center;
@@ -187,7 +195,7 @@ footer div {
     transition: background-color 300ms ease-out, opacity 300ms ease-out;
 }
 
-.card a:hover {
+.card a.button:hover {
     background-color: #333;
     color: #FFFDF7;
 }
@@ -273,11 +281,12 @@ footer div {
     flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     max-width: 465px;
     margin: 0 auto;
     position: relative;
-    padding-bottom: 50px;
+/*    padding-bottom: 50px;*/
 }
 
 .product .details {
@@ -333,6 +342,41 @@ footer div {
 .info a:hover {
     background-color: black;
 }
+.product form {
+    width: 100%;
+}
+.product form input {
+    height: 45px;
+    padding: 10px;
+    width: calc(100% - 22px);
+    border: 1px solid #666;
+    margin-top: 10px;
+    background-color: #FFFDF7;
+    font-size: 1.1em;
+    font-weight: 300;
+    color: black;
+}
+.product button {
+    display: flex;
+    text-decoration: none;
+    border: 0;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #565656;
+    color: white;
+    cursor: pointer;
+    margin-top: 30px;
+    font-size: .875em;
+    height: 77px;
+    transition: background-color 300ms ease-out, opacity 300ms ease-out;
+}
+
+.login button:hover {
+    background-color: black;
+}
+
+
 
 
 .login {
@@ -599,7 +643,8 @@ footer div {
     padding-bottom: 145px;
     width: 604px;
 }
-.basket a{
+
+.basket a {
     text-decoration: none;
     color: #666;
 }

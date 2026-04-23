@@ -31,21 +31,49 @@ final class ProductController extends AbstractController
             $this->addFlash('erreur', "Produit inexistant");
             return $this->redirectToRoute('app_index');
         }
+        $basketItem = $basketRepository->findOneBy([
+            'product' => $product,
+            'user' => $this->getUser()
+        ]);
+        $qty = $basketItem ? $basketItem->getQuantity() : 1;
 
-        $form = $this->createForm(QuantityType::class);
+        $form = $this->createForm(QuantityType::class, ['quantity' => $qty ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $basketItem = new Basket()
-                ->setUser($this->getUser())
-                ->setProduct($product)
-                ->setQuantity($form->get('quantity')->getData());
-            $em->persist($basketItem);
+            $newQty = $form->get('quantity')->getData();
+            if (!$basketItem && $newQty !== 0) {
+                $basketItem = new Basket()
+                    ->setUser($this->getUser())
+                    ->setProduct($product)
+                    ->setQuantity($newQty);
+                $em->persist($basketItem);
+            } elseif ($basketItem && $newQty === 0) {
+                $em->remove($basketItem);
+            } elseif ($basketItem && $newQty !== 0) {
+                $basketItem->setQuantity($newQty);
+            }
             $em->flush();
 
             return $this->redirectToRoute('app_basket');
-
         }
+
+        // Variante
+/*        if ($form->isSubmitted() && $form->isValid()) {
+            $newQty = $form->get('quantity')->getData();
+            if ($newQty === 0 && $basketItem) {
+                $em->remove($basketItem);
+            } elseif ($newQty !== 0) {
+                $basketItem = $basketItem ?? new Basket()
+                    ->setUser($this->getUser())
+                    ->setProduct($product);
+                $basketItem->setQuantity($newQty);
+                $em->persist($basketItem);
+            }
+
+            $em->flush();
+            return $this->redirectToRoute('app_basket');
+        }*/
 
         return $this->render('product/product.html.twig', [
             'product' => $product,
