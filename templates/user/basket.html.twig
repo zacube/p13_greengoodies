@@ -6,22 +6,29 @@
     <div class="basket">
         <div>
             <h1>Mon panier</h1>
-            <p><a href="{{ path('app_empty_basket') }}"><span>×</span> Vider le panier</p></a>
+            {% if basket %}
+                <p><a href="{{ path('app_empty_basket') }}"><span>×</span> Vider le panier</p></a>
+            {% endif %}
             {% for item in basket %}
-            <div class="item">
-                <img src="{{ item.product.picture | imagine_filter('itembasket') }}" alt="{{ item.product.name }}">
-                <div class="infos">
-                    <h3>{{ item.product.name }}</h3>
-                    <p class="qty">Quantité : {{ item.quantity }}</p>
-                    <p class="price">{{ item.product.price }} €</p>
-                </div>
-            </div>
+                <a href="{{ path('app_product', {id:item.product.id}) }}">
+                    <div class="item">
+                        <img src="{{ item.product.picture | imagine_filter('itembasket') }}"
+                             alt="{{ item.product.name }}">
+                        <div class="infos">
+                            <h3>{{ item.product.name }}</h3>
+                            <p class="qty">Quantité : {{ item.quantity }}</p>
+                            <p class="price">{{ item.product.price }} €</p>
+                        </div>
+                    </div>
+                </a>
             {% endfor %}
             <div class="total">
                 <p>Total panier : <span>{{ totalPrice }} €</span></p>
                 <p class="shipping">Frais de livraison : Offert</p>
             </div>
-            <a class="button">Valider la commande</a>
+            {% if basket %}
+                <a class="button">Valider la commande</a>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

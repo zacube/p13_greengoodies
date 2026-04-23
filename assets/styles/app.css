@@ -232,7 +232,7 @@ footer div {
     align-items: end;
 }
 
-.about2 div{
+.about2 div {
     padding: 0 40px 40px 0;
     width: 465px;
 }
@@ -599,6 +599,10 @@ footer div {
     padding-bottom: 145px;
     width: 604px;
 }
+.basket a{
+    text-decoration: none;
+    color: #666;
+}
 
 .basket h1 {
     font-size: 1.25em;
@@ -630,7 +634,7 @@ footer div {
 }
 
 .basket .infos {
-margin-left: 55px;
+    margin-left: 55px;
     align-content: center;
 }
 
@@ -640,12 +644,14 @@ margin-left: 55px;
     color: black;
     margin: 0;
 }
+
 .basket .qty {
     font-size: .875em;
     font-weight: 400;
     color: #666;
     margin-top: 6px;
 }
+
 .basket .price {
     font-size: 1.125em;
     font-weight: 500;
@@ -718,43 +724,50 @@ margin-left: 55px;
     margin-top: 0;
     margin-bottom: 45px;
 }
- .account h2{
-     font-size: .875em;
-     font-weight: 600;
-     color: #000;
-     margin: 0 0 30px;
- }
 
-.orders, .api, .delete{
+.account h2 {
+    font-size: .875em;
+    font-weight: 600;
+    color: #000;
+    margin: 0 0 30px;
+}
+
+.orders, .api, .delete {
     box-sizing: border-box;
     width: 604px;
     background-color: #FFFDF7;
     padding: 60px;
     margin: 0 auto 15px;
 }
- .orders table{
-     width: 100%;
-     border-collapse: collapse;
-     border: none;
- }
+
+.orders table {
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+}
+
 tr {
 }
+
 td, th {
     border-bottom: 1px solid #ccc;
     font-size: .875em;
     text-align: left;
 }
-.orders th{
+
+.orders th {
     padding: 0 10px 20px;
     font-weight: 400;
     color: #666;
 }
-.orders td{
+
+.orders td {
     padding: 20px 10px 30px;
     font-weight: 500;
     color: #333;
 }
-td:nth-child(1), td:nth-child(2), th:nth-child(1), th:nth-child(2){
+
+td:nth-child(1), td:nth-child(2), th:nth-child(1), th:nth-child(2) {
     width: auto;
 }
 
@@ -784,7 +797,7 @@ th:nth-child(3), td:nth-child(3) {
     transition: background-color 300ms ease-out, opacity 300ms ease-out;
 }
 
-.api a.button:hover, .delete a.button:hover{
+.api a.button:hover, .delete a.button:hover {
     background-color: #333;
     color: #FFFDF7;
 }
