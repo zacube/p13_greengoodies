@@ -17,13 +17,13 @@
                         <div class="infos">
                             <h3>{{ item.product.name }}</h3>
                             <p class="qty">Quantité : {{ item.quantity }}</p>
-                            <p class="price">{{ item.product.price }} €</p>
+                            <p class="price">{{ item.product.price|number_format(2, ',', ' ') }} €</p>
                         </div>
                     </div>
                 </a>
             {% endfor %}
             <div class="total">
-                <p>Total panier : <span>{{ totalPrice }} €</span></p>
+                <p>Total panier : <span>{{ totalPrice|number_format(2, ',', ' ')  }} €</span></p>
                 <p class="shipping">Frais de livraison : Offert</p>
             </div>
             {% if basket %}

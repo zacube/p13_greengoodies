@@ -21,7 +21,7 @@ class QuantityType extends AbstractType
 
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Ajouter au panier',
+                'label' => $options['button_label'],
             ]);
         ;
     }
@@ -30,6 +30,7 @@ class QuantityType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => null, //le formulaire travaille avec des données brutes, sans lien avec l'entité
+            'button_label' => 'Ajouter au panier', // valeur par défaut
             'attr' => ['novalidate' => 'novalidate'],
         ]);
     }

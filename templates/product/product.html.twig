@@ -8,14 +8,14 @@
         <div class="info">
             <div class="details">
                 <h1>{{ product.name }}</h1>
-                <p class="price">{{ product.price }} €</p>
+                <p class="price">{{ product.price|number_format(2, ',', ' ') }} €</p>
                 <h4>Description</h4>
                 <p>{{ product.longDesc}}</p>
             </div>
             {{ form_start(form) }}
             {{ form_row(form.quantity) }}
+            {{ form_row(form.submit) }}
             {{ form_end(form) }}
-{#            <a href="{{ path('app_basket', { id: product.id}) }}">Ajouter au panier</a>#}
         </div>
     </div>
 {% endblock %}
