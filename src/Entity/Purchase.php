@@ -31,6 +31,7 @@ class Purchase
     public function __construct()
     {
         $this->purchase_item = new ArrayCollection();
+        $this->setDate();
     }
 
     public function getId(): ?int
@@ -43,9 +44,9 @@ class Purchase
         return $this->date;
     }
 
-    public function setDate(\DateTime $date): static
+    public function setDate(?\DateTime $date = null): static
     {
-        $this->date = $date;
+        $this->date = $date ?? new \DateTime();
 
         return $this;
     }

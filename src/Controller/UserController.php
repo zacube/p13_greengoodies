@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Purchase;
+use App\Entity\PurchaseItem;
 use App\Repository\BasketRepository;
-use Doctrine\ORM\EntityManager;
+use App\Repository\PurchaseRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,7 +22,7 @@ final class UserController extends AbstractController
 
         $totalPrice = 0;
         foreach ($basket as $item) {
-            $totalPrice += ($item->getProduct()->getPrice()) * ($item->getQuantity());
+            $totalPrice += $item->getProduct()->getPrice() * $item->getQuantity();
         }
 
         return $this->render('user/basket.html.twig', [
@@ -28,6 +30,7 @@ final class UserController extends AbstractController
             'totalPrice' => $totalPrice
         ]);
     }
+
     #[Route('/basket/empty', name: 'app_empty_basket')]
     public function emptyBasket(BasketRepository $basketRepository, EntityManagerInterface $em): Response
     {
@@ -46,9 +49,60 @@ final class UserController extends AbstractController
     }
 
     #[Route('/account', name: 'app_account')]
-    public function account(): Response
+    public function account(BasketRepository $basketRepository, PurchaseRepository $purchaseRepository, EntityManagerInterface $em): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED');
+        // récupère tous les éléments du panier
+        $basket = $basketRepository->findBy([
+            'user' => $this->getUser(),
+        ]);
+        if ($basket) {
+            // crée un nouvel achat au nom de l'utilisateur
+            $purchase = new Purchase()
+                ->setUser($this->getUser());
+            // crée un élément d'achat pour chaque élément du panier,
+            // et ajoute l'élément d'achat à l'achat
+            foreach ($basket as $item) {
+                $purchaseItem = new PurchaseItem()
+                    ->setPurchase($purchase->getId())
+                    ->setProduct($item->getProduct())
+                    ->setUnitPrice($item->getProduct()->getPrice())
+                    ->setQuantity($item->getQuantity());
+                $em->persist($purchaseItem);
+
+                $purchase->addPurchaseItem($purchaseItem);
+            }
+            // stocke l'achat et les éléments d'achat
+            $em->persist($purchase);
+            $em->flush();
+
+            // vide le panier
+            foreach ($basket as $item) {
+                $em->remove($item);
+                $em->flush();
+            }
+        }
+
+        // récupère tous les achats de l'utilisateur
+        $userPurchase = $purchaseRepository->findBy([
+            'user' => $this->getUser(),
+        ]);
+
+        $purchaseList = [];
+        foreach ($userPurchase as $itemP) {
+            $totalPrice = 0;
+            foreach ($itemP->getPurchaseItem() as $item) {
+                $totalPrice += $item->getUnitPrice() * $item->getQuantity();
+            }
+            $purchaseList[] = [
+                'id' => $itemP->getId(),
+                'date' => $itemP->getDate(),
+                'totalPrice' => $totalPrice
+            ];
+        }
+
         return $this->render('user/account.html.twig', [
+            'purchaseList' => $purchaseList,
         ]);
     }
 }
