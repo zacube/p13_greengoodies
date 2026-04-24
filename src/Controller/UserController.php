@@ -105,4 +105,19 @@ final class UserController extends AbstractController
             'purchaseList' => $purchaseList,
         ]);
     }
+
+
+    #[Route('/account/del', name: 'app_del_account')]
+    public function deleteAccount(BasketRepository $basketRepository, PurchaseRepository $purchaseRepository, EntityManagerInterface $em): Response
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED');
+        $em->remove($this->getUser());
+        $em->flush();
+        /*dump($this->getUser());*/
+
+        return $this->render('user/account.html.twig', [
+            'purchaseList' => [],
+        ]);
+    }
+
 }
