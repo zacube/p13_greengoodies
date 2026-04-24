@@ -27,7 +27,7 @@
             {% if app.user %}
                 <div>
                     <a href="{{ path('app_basket') }}" >Panier</a>
-                    <a href="{{ path('app_account') }}" >Commandes</a>
+                    <a href="{{ path('app_account') }}" >Mon compte</a>
                     <a href="{{ path('app_auth_logout') }}" title="Déconnexion ({{ app.user.email }})">Déconnexion</a>
                 </div>
             {% else %}
