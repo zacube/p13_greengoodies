@@ -107,7 +107,7 @@ final class UserController extends AbstractController
     }
 
 
-    #[Route('/account/del', name: 'app_del_account')]
+    #[Route('/account/delete', name: 'app_account_delete')]
     public function deleteAccount(BasketRepository $basketRepository, PurchaseRepository $purchaseRepository, EntityManagerInterface $em): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED');

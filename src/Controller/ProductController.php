@@ -35,10 +35,9 @@ final class ProductController extends AbstractController
             'product' => $product,
             'user' => $this->getUser()
         ]);
-        $qty = $basketItem ? $basketItem->getQuantity() : 1;
-        dump($basketItem);
+
         $form = $this->createForm(QuantityType::class, [
-            'quantity' => $qty,
+            'quantity' => $basketItem ? $basketItem->getQuantity() : 1,
             ],[
             'button_label' => $basketItem ? 'Mettre à jour' : 'Ajouter au panier',
             ]);
