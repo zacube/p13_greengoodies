@@ -150,4 +150,24 @@ final class UserController extends AbstractController
 
         return $this->redirectToRoute('app_index');
     }
+
+    #[Route('/account/api-toggle', name: 'app_api_toggle')]
+    public function toggleApi(Request $request, EntityManagerInterface $em): Response
+    {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED');
+
+        // Vérifie le token CSRF du bouton "Supprimer mon compte" (pattern PRG PostRequestGet)
+        if (!$this->isCsrfTokenValid('toggle-api', $request->request->get('_token'))) {
+            $this->addFlash('error', 'Votre session a expiré, veuillez vous reconnecter.');
+            throw $this->createAccessDeniedException('Token CSRF invalide');
+        }
+        $user = $this->getUser();
+        $user->setApi(!$user->isApi());
+        $em->flush();
+
+        $this->addFlash('success', 'Accès API mis à jour.');
+
+        return $this->redirectToRoute('app_account');
+    }
+
 }
