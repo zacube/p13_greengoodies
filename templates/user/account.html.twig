@@ -13,7 +13,7 @@
                     <th>Date</th>
                     <th class="colonne3">Prix</th>
                 </tr>
-                {% for item in purchaseList %}
+                {% for item in purchaseList|reverse %}
                     <tr>
                         <td>{{ item.id }}</td>
                         <td>{{ item.date|date('d/m/Y') }}</td>

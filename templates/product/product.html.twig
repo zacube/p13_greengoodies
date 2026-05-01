@@ -15,9 +15,13 @@
             {{ form_start(form) }}
             {% if app.user %}
                 {{ form_row(form.quantity) }}
+                {{ form_row(form.submit) }}
+                {{ form_end(form) }}
+            {% else %}
+                {{ form_row(form.submit) }}
+                {{ form_end(form, {'render_rest': false}) }} {# 'render_rest' empêche l'affichage du champ 'quantity #}
             {% endif %}
-            {{ form_row(form.submit) }}
-            {{ form_end(form) }}
+
         </div>
     </div>
 {% endblock %}

@@ -7,7 +7,10 @@
         <div>
             <h1>Mon panier</h1>
             {% if basket %}
-                <p><a href="{{ path('app_empty_basket') }}"><span>×</span> Vider le panier</a></p>
+                <form action="{{ path('app_basket_empty') }}" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token('empty_basket') }}">
+                    <button type="submit"><span>×</span> Vider le panier</button>
+                </form>
             {% endif %}
             {% for item in basket %}
                 <a href="{{ path('app_product', {id:item.product.id}) }}">
@@ -27,7 +30,12 @@
                 <p class="shipping">Frais de livraison : Offert</p>
             </div>
             {% if basket %}
-                <a href="{{ path('app_account') }}" class="button" onclick="return confirm('Êtes-vous sûr de vouloir valider votre panier ?')">Valider la commande</a>
+                <form action="{{ path('app_basket_validate') }}" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token('validate_basket') }}">
+                    <button type="submit" class="button" onclick="return confirm('Êtes-vous sûr de vouloir valider votre panier ?')">
+                        Valider la commande
+                    </button>
+                </form>
             {% endif %}
         </div>
     </div>

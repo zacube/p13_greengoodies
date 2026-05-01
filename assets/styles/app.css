@@ -182,6 +182,7 @@ footer div {
 
 .card a.button {
     display: flex;
+    flex-shrink: 0;
     text-decoration: none;
     align-items: center;
     justify-content: center;
@@ -345,6 +346,14 @@ footer div {
 .product form {
     width: 100%;
 }
+.product form ul {
+    list-style: none;
+    padding: 0;
+    /* margin: 0; */
+    color: red;
+    font-size: .7em;
+}
+
 .product form input {
     height: 45px;
     padding: 10px;
@@ -372,8 +381,8 @@ footer div {
     transition: background-color 300ms ease-out, opacity 300ms ease-out;
 }
 
-.login button:hover {
-    background-color: black;
+.product button:hover {
+    background-color: #333;
 }
 
 
@@ -655,16 +664,6 @@ footer div {
     text-align: center;
 }
 
-.basket h1 + p {
-    font-size: .875em;
-    font-weight: 400;
-    color: #666;
-}
-
-.basket h1 + p span {
-    font-size: 1.25em;
-}
-
 .basket .item {
     background-color: #FFFDF7;
     padding: 40px;
@@ -733,13 +732,35 @@ footer div {
     color: #666;
 }
 
-.basket a.button {
+.basket form:nth-of-type(1) button {
+    border: 0;
+    background-color: unset;
+    color: #666;
+    cursor: pointer;
+    margin-left: 0;
+    margin-bottom: 17px;
+    font-size: .875em;
+    font-weight: 400;
+    transition: background-color 300ms ease-out, opacity 300ms ease-out;
+    font-family: 'Inter', 'arial', sans-serif;
+
+}
+.basket form:nth-of-type(1) button span{
+    font-size: 1.25em;
+}
+
+.basket form:nth-of-type(1) button:hover {
+    color: #222;
+}
+
+.basket form:nth-of-type(2) button{
     display: flex;
     text-decoration: none;
     align-items: center;
+    border: 0;
     justify-content: center;
     width: 479px;
-    background-color: #565656;
+    background-color: #666;
     color: white;
     cursor: pointer;
     margin-top: 30px;
@@ -750,8 +771,8 @@ footer div {
     transition: background-color 300ms ease-out, opacity 300ms ease-out;
 }
 
-.basket a.button:hover {
-    background-color: black;
+.basket form:nth-of-type(2) button:hover {
+    background-color: #333;
 }
 
 .account {

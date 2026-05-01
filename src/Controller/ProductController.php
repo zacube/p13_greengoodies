@@ -26,57 +26,49 @@ final class ProductController extends AbstractController
     #[Route('/product/{id}', name: 'app_product', requirements: ['id' => '\d+'])]
     public function product(Request $request, EntityManagerInterface $em, BasketRepository $basketRepository, ?Product $product): Response
     {
+
         // Produit introuvable → redirection
         if ($product === null) {
             $this->addFlash('erreur', "Produit inexistant");
             return $this->redirectToRoute('app_index');
         }
+        // cherche si le produit est déjà dans le panier
         $basketItem = $basketRepository->findOneBy([
             'product' => $product,
             'user' => $this->getUser()
         ]);
 
-        $form = $this->createForm(QuantityType::class, [
-            'quantity' => $basketItem ? $basketItem->getQuantity() : 1,
-            ],[
-            'button_label' => $basketItem ? 'Mettre à jour' : 'Ajouter au panier',
-            ]);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $newQty = $form->get('quantity')->getData();
-            if (!$basketItem && $newQty !== 0) {
-                $basketItem = new Basket()
-                    ->setUser($this->getUser())
-                    ->setProduct($product)
-                    ->setQuantity($newQty);
-                $em->persist($basketItem);
-            } elseif ($basketItem && $newQty === 0) {
-                $em->remove($basketItem);
-            } elseif ($basketItem && $newQty !== 0) {
-                $basketItem->setQuantity($newQty);
-            }
-            $em->flush();
-
-            return $this->redirectToRoute('app_basket');
+        if (!$basketItem) {
+            $basketItem = new Basket()->setQuantity(1);
         }
 
-        // Variante
-/*        if ($form->isSubmitted() && $form->isValid()) {
-            $newQty = $form->get('quantity')->getData();
-            if ($newQty === 0 && $basketItem) {
-                $em->remove($basketItem);
-            } elseif ($newQty !== 0) {
-                $basketItem = $basketItem ?? new Basket()
+        $isNew = $basketItem->getId() === null; // ← clé de la distinction
+
+        $form = $this->createForm(QuantityType::class, $basketItem, [
+            'button_label' => $isNew ? 'Ajouter au panier' : 'Mettre à jour',
+        ]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && !$this->isGranted('ROLE_USER')) {
+            return $this->redirectToRoute('app_auth_login');
+        }
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $newQty = $basketItem->getQuantity();
+
+            if ($isNew && $newQty !== 0) {
+                $basketItem
                     ->setUser($this->getUser())
                     ->setProduct($product);
-                $basketItem->setQuantity($newQty);
                 $em->persist($basketItem);
+            } elseif (!$isNew && $newQty === 0) {
+                $em->remove($basketItem);
             }
+            // cas !$isNew && $newQty !== 0 : Doctrine détecte le changement tout seul, rien à faire
 
             $em->flush();
             return $this->redirectToRoute('app_basket');
-        }*/
+        }
 
         return $this->render('product/product.html.twig', [
             'product' => $product,
