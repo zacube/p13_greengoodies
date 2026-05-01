@@ -287,7 +287,7 @@ footer div {
     max-width: 465px;
     margin: 0 auto;
     position: relative;
-/*    padding-bottom: 50px;*/
+    /*    padding-bottom: 50px;*/
 }
 
 .product .details {
@@ -343,9 +343,11 @@ footer div {
 .info a:hover {
     background-color: black;
 }
+
 .product form {
     width: 100%;
 }
+
 .product form ul {
     list-style: none;
     padding: 0;
@@ -365,6 +367,7 @@ footer div {
     font-weight: 300;
     color: black;
 }
+
 .product button {
     display: flex;
     text-decoration: none;
@@ -384,8 +387,6 @@ footer div {
 .product button:hover {
     background-color: #333;
 }
-
-
 
 
 .login {
@@ -743,9 +744,9 @@ footer div {
     font-weight: 400;
     transition: background-color 300ms ease-out, opacity 300ms ease-out;
     font-family: 'Inter', 'arial', sans-serif;
-
 }
-.basket form:nth-of-type(1) button span{
+
+.basket form:nth-of-type(1) button span {
     font-size: 1.25em;
 }
 
@@ -753,7 +754,7 @@ footer div {
     color: #222;
 }
 
-.basket form:nth-of-type(2) button{
+.basket form:nth-of-type(2) button {
     display: flex;
     text-decoration: none;
     align-items: center;
@@ -847,24 +848,23 @@ th:nth-child(3), td:nth-child(3) {
     white-space: nowrap;
 }
 
-.api a.button, .delete a.button {
+.account button {
     display: flex;
     text-decoration: none;
     align-items: center;
+    border: 0;
     justify-content: center;
-    margin: 0;
-    padding: 0;
-    background-color: #565656;
-    color: #ffffff;
+    width: 479px;
+    background-color: #666;
+    color: white;
     cursor: pointer;
-    width: 100%;
-    height: 77px;
+    margin-left: auto;
+    margin-right: auto;
     font-size: .875em;
+    height: 77px;
     transition: background-color 300ms ease-out, opacity 300ms ease-out;
 }
 
-.api a.button:hover, .delete a.button:hover {
+.account button:hover {
     background-color: #333;
-    color: #FFFDF7;
 }
-

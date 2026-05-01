@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 final class UserController extends AbstractController
 {
@@ -130,18 +131,23 @@ final class UserController extends AbstractController
         ]);
     }
 
-
     #[Route('/account/delete', name: 'app_account_delete')]
-    public function deleteAccount(BasketRepository $basketRepository, PurchaseRepository $purchaseRepository, EntityManagerInterface $em): Response
+    public function deleteAccount(Request $request, TokenStorageInterface $tokenStorage, EntityManagerInterface $em): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED');
+        // Vérifie le token CSRF du bouton "Supprimer mon compte" (pattern PRG PostRequestGet)
+        if (!$this->isCsrfTokenValid('account_delete', $request->request->get('_token'))) {
+            $this->addFlash('error', 'Votre session a expiré, veuillez vous reconnecter.');
+            throw $this->createAccessDeniedException('Token CSRF invalide');
+        }
         $em->remove($this->getUser());
         $em->flush();
-        /*dump($this->getUser());*/
 
-        return $this->render('user/account.html.twig', [
-            'purchaseList' => [],
-        ]);
+        // Invalide la session et déconnecte l'utilisateur
+        $tokenStorage->setToken(null);
+        $request->getSession()->invalidate();
+        $this->addFlash('success', 'Votre compte a bien été supprimé.');
+
+        return $this->redirectToRoute('app_index');
     }
-
 }
