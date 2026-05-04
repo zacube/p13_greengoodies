@@ -24,7 +24,7 @@
         </div>
         <div class="api">
             <h2>Mon accès API</h2>
-            <form method="post" action="{{ path('app_api_toggle') }}">
+            <form method="post" action="{{ path('app_account_apitoggle') }}">
                 <input type="hidden" name="_token" value="{{ csrf_token('toggle-api') }}">
                 <button type="submit" class="button">
                     {{ app.user.api ? 'Désactiver l\'accès API' :'Activer mon accès API' }}

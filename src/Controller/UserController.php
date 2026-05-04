@@ -18,7 +18,6 @@ final class UserController extends AbstractController
     #[Route('/basket', name: 'app_basket')]
     public function basket(BasketRepository $basketRepository): Response
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED');
         $basket = $basketRepository->findBy(['user' => ($this->getUser())]);
         dump($basket);
 
@@ -36,7 +35,6 @@ final class UserController extends AbstractController
     #[Route('/basket/empty', name: 'app_basket_empty', methods: ['POST'])]
     public function emptyBasket(Request $request, BasketRepository $basketRepository, EntityManagerInterface $em): Response
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED');
         if (!$this->isCsrfTokenValid('empty_basket', $request->request->get('_token'))) {
             $this->addFlash('error', 'Votre session a expiré, veuillez réessayer.');
             return $this->redirectToRoute('app_basket');
@@ -57,7 +55,6 @@ final class UserController extends AbstractController
 
     #[Route('/basket/validate', name: 'app_basket_validate', methods: ['POST'])]
     public function validateBasket(Request $request, BasketRepository $basketRepository, EntityManagerInterface $em): Response {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED');
 
         // Vérifie le token CSRF du bouton "Valider votre commande" (pattern PRG PostRequestGet)
         if (!$this->isCsrfTokenValid('validate_basket', $request->request->get('_token'))) {
@@ -106,8 +103,6 @@ final class UserController extends AbstractController
     #[Route('/account', name: 'app_account')]
     public function account(BasketRepository $basketRepository, PurchaseRepository $purchaseRepository, EntityManagerInterface $em): Response
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED');
-
         // récupère tous les achats de l'utilisateur
         $userPurchase = $purchaseRepository->findBy([
             'user' => $this->getUser(),
@@ -134,7 +129,6 @@ final class UserController extends AbstractController
     #[Route('/account/delete', name: 'app_account_delete')]
     public function deleteAccount(Request $request, TokenStorageInterface $tokenStorage, EntityManagerInterface $em): Response
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED');
         // Vérifie le token CSRF du bouton "Supprimer mon compte" (pattern PRG PostRequestGet)
         if (!$this->isCsrfTokenValid('account_delete', $request->request->get('_token'))) {
             $this->addFlash('error', 'Votre session a expiré, veuillez vous reconnecter.');
@@ -151,11 +145,9 @@ final class UserController extends AbstractController
         return $this->redirectToRoute('app_index');
     }
 
-    #[Route('/account/api-toggle', name: 'app_api_toggle')]
+    #[Route('/account/api-toggle', name: 'app_account_apitoggle')]
     public function toggleApi(Request $request, EntityManagerInterface $em): Response
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED');
-
         // Vérifie le token CSRF du bouton "Supprimer mon compte" (pattern PRG PostRequestGet)
         if (!$this->isCsrfTokenValid('toggle-api', $request->request->get('_token'))) {
             $this->addFlash('error', 'Votre session a expiré, veuillez vous reconnecter.');
