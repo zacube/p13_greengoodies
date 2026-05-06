@@ -16,6 +16,17 @@ security:
             # Ensure dev tools and static assets are always allowed
             pattern: ^/(_profiler|_wdt|assets|build)/
             security: false
+        api:
+            pattern: ^/api
+            stateless: true
+            json_login:
+                check_path: /api/login
+                username_path: email            # nom du champ login dans le JSON
+                password_path: password         # nom du champ password dans le JSON
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+            jwt: ~
+
         main:
             lazy: true
             provider: app_user_provider
@@ -44,7 +55,9 @@ security:
         - { path: ^/signin, roles: PUBLIC_ACCESS }
         - { path: ^/basket, roles: ROLE_USER }
         - { path: ^/account, roles: ROLE_USER }
+        - { path: ^/api/login, roles: PUBLIC_ACCESS }
         - { path: ^/api, roles: PUBLIC_ACCESS }
+
 
 when@test:
     security:
