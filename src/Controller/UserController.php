@@ -156,8 +156,7 @@ final class UserController extends AbstractController
         $user = $this->getUser();
         $user->setApi(!$user->isApi());
         $em->flush();
-
-        $this->addFlash('success', 'Accès API mis à jour.');
+        $user->isApi() ? $this->addFlash('success', 'Accès API activé.') : $this->addFlash('success', 'Accès API désactivé.');
 
         return $this->redirectToRoute('app_account');
     }

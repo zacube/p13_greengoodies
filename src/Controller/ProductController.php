@@ -62,6 +62,7 @@ final class ProductController extends AbstractController
                     ->setProduct($product);
                 $em->persist($basketItem);
             } elseif (!$isNew && $newQty === 0) {
+                $this->addFlash('success', "Le produit a été retiré du panier");
                 $em->remove($basketItem);
             }
             // cas !$isNew && $newQty !== 0 : Doctrine détecte le changement tout seul, rien à faire

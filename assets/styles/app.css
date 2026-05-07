@@ -868,3 +868,23 @@ th:nth-child(3), td:nth-child(3) {
 .account button:hover {
     background-color: #333;
 }
+
+.alert.alert-success, .alert.alert-erreur {
+    background-color: #bdcdc2;
+    border-top: 1px #899e8f solid;
+    text-align: center;
+    margin: 0;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    color: white;
+}
+
+.alert.alert-erreur {
+    background-color: #cfa49a;
+    border-top: 1px #ab8370 solid;
+    text-align: center;
+    margin: 0;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    color: white;
+}

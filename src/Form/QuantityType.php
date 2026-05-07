@@ -17,7 +17,12 @@ class QuantityType extends AbstractType
         $builder
             ->add('quantity', IntegerType::class, [
                 'label' => 'Quantité',
-                'attr' => ['class' => 'qty'],
+                'attr' => [
+                    'class' => 'qty',
+                    'min' => 0,
+                    'max' => 100,
+                    'step' => 1,
+                    ],
                 'label_attr' => ['class' => 'qtyLabel'],
                 'error_bubbling' => false,
                 'constraints' => [
