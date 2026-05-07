@@ -21,9 +21,9 @@ security:
             stateless: true
             json_login:
                 check_path: /api/login
-                username_path: email            # nom du champ login dans le JSON
-                password_path: password         # nom du champ password dans le JSON
-                success_handler: lexik_jwt_authentication.handler.authentication_success
+                username_path: email  # nom du champ login dans le JSON
+                password_path: password  # nom du champ password dans le JSON
+                success_handler: App\Security\CheckApiHandler
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
             jwt: ~
 
@@ -56,7 +56,9 @@ security:
         - { path: ^/basket, roles: ROLE_USER }
         - { path: ^/account, roles: ROLE_USER }
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
-        - { path: ^/api, roles: PUBLIC_ACCESS }
+        - { path: ^/api/products, roles: ROLE_USER }
+        - { path: ^/api/docs, roles: PUBLIC_ACCESS }
+        - { path: ^/api, roles: ROLE_USER }
 
 
 when@test:
