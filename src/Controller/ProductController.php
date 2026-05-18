@@ -8,6 +8,7 @@ use App\Form\QuantityType;
 use App\Repository\BasketRepository;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,8 +24,8 @@ final class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/product/{id}', name: 'app_product', requirements: ['id' => '\d+'])]
-    public function product(Request $request, EntityManagerInterface $em, BasketRepository $basketRepository, ?Product $product): Response
+    #[Route('/product/{slug}', name: 'app_product')]
+    public function product(Request $request, EntityManagerInterface $em, BasketRepository $basketRepository, #[MapEntity(mapping: ['slug' => 'slug'])] ?Product $product): Response
     {
 
         // Produit introuvable → redirection

@@ -10,7 +10,7 @@
             <p>Retrouvez des articles d’hygiène & beauté, des accessoires & boissons et du prêt-à-porter</p>
         </div>
         <div class="bloc2">
-            <img src="{{ '/images/hero-header.jpg' | imagine_filter('home1') }}" alt="">
+            <img src="{{ '/images/hero-header.webp' | imagine_filter('home1') }}" alt="">
         </div>
     </section>
     <section class="products">
@@ -18,11 +18,11 @@
         <div class="product-list">
             {% for product in products %}
                 <div class="card">
-                    <a href="{{ path('app_product', { id: product.id}) }}" class="picture"><img src="{{ product.picture | imagine_filter('homeproduct') }}" alt=""></a>
+                    <a href="{{ path('app_product', { slug: product.slug}) }}" class="picture"><img src="{{ product.picture | imagine_filter('homeproduct') }}" alt=""></a>
                     <h3>{{ product.name }}</h3>
                     <p class="desc">{{ product.shortDesc }}</p>
                     <p class="price">{{ product.price}} €</p>
-                    <a href="{{ path('app_product', { id: product.id}) }}" class="button"  >Voir le produit</a>
+                    <a href="{{ path('app_product', { slug: product.slug}) }}" class="button"  >Voir le produit</a>
                 </div>
             {% endfor %}
         </div>
@@ -36,7 +36,7 @@
                     qui
                     allient qualité, durabilité et éthique</p>
             </div>
-            <img src="{{ '/images/conviction.jpg' | imagine_filter('home2') }}" alt="conviction">
+            <img src="{{ '/images/conviction.webp' | imagine_filter('home2') }}" alt="conviction">
         </div>
         <div class="about2">
             <div>
@@ -51,7 +51,7 @@
                     matériaux
                     écologiques.</p>
             </div>
-            <img src="{{ '/images/valeurs.jpg' | imagine_filter('home2') }}" alt="valeurs">
+            <img src="{{ '/images/valeurs.webp' | imagine_filter('home2') }}" alt="valeurs">
         </div>
     </section>
 {% endblock %}

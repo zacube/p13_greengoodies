@@ -10,11 +10,10 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Attribute\Groups;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
-#[ApiResource(
-    normalizationContext: ['groups' => ['product:read:collection']],
-)]
+#[ApiResource(normalizationContext: ['groups' => ['product:read:collection']],)]
 #[GetCollection]
 class Product
 {
@@ -27,6 +26,10 @@ class Product
     #[ORM\Column(length: 255)]
     #[Groups(['product:read:collection'])]
     private ?string $name = null;
+
+    #[Gedmo\Slug(fields: ['name'])]
+    #[ORM\Column(length: 255, unique: true)]
+    private string $slug;
 
     #[ORM\Column(length: 255)]
     #[Groups(['product:read:collection'])]
@@ -77,6 +80,11 @@ class Product
         $this->name = $name;
 
         return $this;
+    }
+
+    public function getSlug(): string
+    {
+        return $this->slug;
     }
 
     public function getPicture(): ?string
