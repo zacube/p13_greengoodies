@@ -1,28 +1,25 @@
 # Documentation on how to configure the bundle can be found at: https://symfony.com/doc/current/bundles/LiipImagineBundle/basic-usage.html
 liip_imagine:
     driver: "gd"
+    default_filter_set_settings:
+        format: webp
+        quality: 90
     filter_sets:
         home1:
-            quality: 90
             filters:
                 thumbnail: { size: [788, 1050], mode: outbound }
         home2:
-            quality: 90
             filters:
                 thumbnail: { size: [601, 902], mode: outbound }
         homeproduct:
-            quality: 90
             filters:
                 thumbnail: { size: [480, 474], mode: outbound }
         product:
-            quality: 90
             filters:
                 thumbnail: { size: [734, 686], mode: outbound }
         connection:
-            quality: 90
             filters:
                 thumbnail: { size: [734, 988], mode: outbound }
         itembasket:
-            quality: 90
             filters:
                 thumbnail: { size: [142, 132], mode: outbound }

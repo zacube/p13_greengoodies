@@ -23,7 +23,7 @@ class AppFixtures extends Fixture
             $nom = str_repeat($i, 3);
             $user->setFirstname($i);
             $user->setLastname($nom);
-            $user->setEmail($nom . '@toto.com');
+            $user->setEmail($nom . '@' . $nom . '.com');
             $user->setPassword($this->passwordHasher->hashPassword($user, 'aze'));
             $user->setCgu(true);
             $user->setApi(false);
@@ -69,7 +69,7 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < 9; $i++) {
             $product = new Product();
             $product->setName($nomProduit[$i]);
-            $product->setPicture('/images/produit' . ($i + 1) . '.jpg');
+            $product->setPicture('/images/produit' . ($i + 1) . '.webp');
             $rand = rand(5, 32) + (mt_rand(0, 99) / 100);
             $prix = number_format($rand, 2, '.', '');
             $product->setPrice($prix);
