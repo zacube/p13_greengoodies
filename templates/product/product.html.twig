@@ -18,8 +18,10 @@
                 {{ form_row(form.submit) }}
                 {{ form_end(form) }}
             {% else %}
-                {{ form_row(form.submit) }}
-                {{ form_end(form, {'render_rest': false}) }} {# 'render_rest' empêche l'affichage du champ 'quantity #}
+                {# Simple lien pour les non-connectés #}
+                <a href="{{ path('app_auth_login', {'_target_path': app.request.uri}) }}" class="btn">
+                    Ajouter au panier
+                </a>
             {% endif %}
 
         </div>

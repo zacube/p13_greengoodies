@@ -9,7 +9,7 @@
             {% if basket %}
                 <form action="{{ path('app_basket_empty') }}" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token('empty_basket') }}">
-                    <button type="submit"><span>×</span> Vider le panier</button>
+                    <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir vider votre panier ?')"><span>×</span> Vider le panier</button>
                 </form>
             {% endif %}
             {% for item in basket %}

@@ -45,11 +45,8 @@ final class UserController extends AbstractController
             $em->remove($item);
             $em->flush();
         }
+        $this->addFlash('success', 'Votre panier a bien été vidé !');
 
-/*        return $this->render('user/basket.html.twig', [
-            'basket' => [],
-            'totalPrice' => 0
-        ]);*/
         return $this->redirectToRoute('app_basket');
     }
 
@@ -148,7 +145,7 @@ final class UserController extends AbstractController
     #[Route('/account/api-toggle', name: 'app_account_apitoggle')]
     public function toggleApi(Request $request, EntityManagerInterface $em): Response
     {
-        // Vérifie le token CSRF du bouton "Supprimer mon compte" (pattern PRG PostRequestGet)
+        // Vérifie le token CSRF du bouton "toggle-api" (pattern PRG PostRequestGet)
         if (!$this->isCsrfTokenValid('toggle-api', $request->request->get('_token'))) {
             $this->addFlash('error', 'Votre session a expiré, veuillez vous reconnecter.');
             throw $this->createAccessDeniedException('Token CSRF invalide');
